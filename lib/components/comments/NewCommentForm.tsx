@@ -10,7 +10,6 @@ import cn from 'classnames';
 import cuid from 'cuid';
 import React, { useRef, useState, useEffect } from 'react';
 import NewUserModal from '@lib/components/comments/NewUserModal';
-import Portal from '@reach/portal';
 import { useComments } from '@lib/hooks/use-comments';
 import Avatar from './Avatar';
 import { useModal } from '@lib/hooks/use-modal';
@@ -39,7 +38,8 @@ const NewCommentForm = ({
     if (user && profile && (!profile.full_name || !profile.username)) {
       open('newUserModal');
     }
-  }, [user, profile, open]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, profile]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -104,7 +104,6 @@ const NewCommentForm = ({
     mutateGlobalCount((count: number) => count + 1, false);
 
     mutateComments(async (pages: CommentType[]) => {
-      console.log(pages);
       const optimisticResponse: CommentType = ({
         ...post,
         author: profile,

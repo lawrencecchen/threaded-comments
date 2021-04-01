@@ -25,6 +25,7 @@ interface Props {
 
 const CommentsList = ({ initialData = null, useInfiniteScroll = false }: Props): JSX.Element => {
   const {
+    rootComment,
     comments,
     remainingCount,
     count,
@@ -34,6 +35,7 @@ const CommentsList = ({ initialData = null, useInfiniteScroll = false }: Props):
     isReachingEnd,
     loadMore,
     error,
+    commentsError,
   } = useComments();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -59,8 +61,21 @@ const CommentsList = ({ initialData = null, useInfiniteScroll = false }: Props):
     }
   }
 
-  if (error) {
+  if (error || commentsError) {
     console.log(error);
+    return (
+      <div className="text-center text-red-600 dark:text-red-400 px-3 sm:px-6">
+        An error occurred.
+      </div>
+    );
+  }
+
+  if (!isLoadingInitialData && !rootComment) {
+    return (
+      <div className="text-center text-red-600 dark:text-red-400 px-3 sm:px-6">
+        This post does not exist.
+      </div>
+    );
   }
 
   return (

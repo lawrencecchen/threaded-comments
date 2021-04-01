@@ -29,7 +29,9 @@ const ModalProvider = (props: ModalProviderProps): JSX.Element => {
   const [openKeys, setOpenKeys] = useState<key[]>([]);
 
   function handleOpen(key: key): void {
-    setOpenKeys((keys) => [...keys, key]);
+    if (!openKeys.includes(key)) {
+      setOpenKeys((keys) => [...keys, key]);
+    }
   }
 
   function handleClose(): void {

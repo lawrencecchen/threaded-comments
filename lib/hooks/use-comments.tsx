@@ -12,11 +12,13 @@ export type SortingBehavior = 'pathVotesRecent' | 'pathLeastRecent' | 'pathMostR
 interface CommentsContextInterface {
   postId: number | null;
   user: User | null;
+  rootComment: CommentType | null | undefined;
   comments: CommentType[];
   rootId: number | null;
   count: number | null | undefined;
   remainingCount: number | null;
   error: any;
+  commentsError: any;
   isLoadingInitialData: boolean;
   isLoadingMore: boolean;
   isEmpty: boolean;
@@ -24,6 +26,7 @@ interface CommentsContextInterface {
   loadMore: () => void;
   mutateComments: any;
   mutateGlobalCount: any;
+  mutateRootComment: any;
   sortingBehavior: SortingBehavior;
   setSortingBehavior: (behavior: SortingBehavior) => void;
   setSize: (size: number | ((size: number) => number)) => Promise<any[] | undefined | null> | null;
@@ -32,11 +35,13 @@ interface CommentsContextInterface {
 const CommentsContext = createContext<CommentsContextInterface>({
   postId: null,
   user: null,
+  rootComment: null,
   comments: [],
   rootId: null,
   count: null,
   remainingCount: null,
   error: null,
+  commentsError: null,
   isLoadingInitialData: false,
   isLoadingMore: false,
   isEmpty: true,
@@ -46,6 +51,7 @@ const CommentsContext = createContext<CommentsContextInterface>({
   },
   mutateComments: null,
   mutateGlobalCount: null,
+  mutateRootComment: null,
   sortingBehavior: 'pathVotesRecent',
   setSortingBehavior: () => {
     return;
@@ -61,19 +67,39 @@ interface CommentsContextProviderProps {
 }
 
 const postgresArray = (arr: any[]): string => `{${arr.join(',')}}`;
+
 export const CommentsContextProvider = (props: CommentsContextProviderProps): JSX.Element => {
   const { postId } = props;
   const { user } = useUser();
   const [sortingBehavior, setSortingBehavior] = useState<SortingBehavior>('pathVotesRecent');
 
-  const { data: count, mutate: mutateGlobalCount } = useSWR<number | null, any>(
-    `globalCount_${postId}`,
-    {
-      initialData: null,
-      fetcher: () => null,
-      revalidateOnFocus: false,
-      revalidateOnMount: false,
-    }
+  const { data: count, mutate: mutateGlobalCount, error: commentsError } = useSWR<
+    number | null,
+    any
+  >(`globalCount_${postId}`, {
+    initialData: null,
+    fetcher: () => null,
+    revalidateOnFocus: false,
+    revalidateOnMount: false,
+  });
+
+  const { data: rootComment, mutate: mutateRootComment } = useSWR(
+    ['posts', postId, user],
+    async (_, postId, _user) =>
+      supabase
+        .from<definitions['comments_thread_with_user_vote']>('comments_thread_with_user_vote')
+        .select('*')
+        .eq('id', postId)
+        .then(({ data, error }) => {
+          if (error) {
+            console.log(error);
+            throw error;
+          }
+
+          if (!data?.[0]) return null;
+
+          return (data[0] as unknown) as CommentType;
+        })
   );
 
   const getKey = (
@@ -88,13 +114,6 @@ export const CommentsContextProvider = (props: CommentsContextProviderProps): JS
     if (pageIndex === 0) {
       return ['comments_thread_with_user_vote', postgresArray([postId]), sortingBehavior, user];
     }
-
-    console.log(
-      sortingBehavior,
-      postgresArray(previousPageData[previousPageData.length - 1][sortingBehavior])
-    );
-
-    // return null;
 
     return [
       'comments_thread_with_user_vote',
@@ -171,6 +190,8 @@ export const CommentsContextProvider = (props: CommentsContextProviderProps): JS
     postId,
     user,
     comments,
+    rootComment,
+    commentsError,
     rootId: postId,
     count,
     remainingCount,
@@ -182,10 +203,12 @@ export const CommentsContextProvider = (props: CommentsContextProviderProps): JS
     loadMore,
     mutateComments,
     mutateGlobalCount,
+    mutateRootComment,
     sortingBehavior,
     setSortingBehavior,
     setSize,
   };
+
   return <CommentsContext.Provider value={value} {...props} />;
 };
 

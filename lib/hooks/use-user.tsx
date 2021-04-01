@@ -64,7 +64,7 @@ export const UserContextProvider = (props: Props): JSX.Element => {
     );
 
     if (error) {
-      console.log(error);
+      throw error;
     }
 
     return () => {

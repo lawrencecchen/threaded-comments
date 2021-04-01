@@ -51,7 +51,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
   const [showReplyForm, setShowReplyForm] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const isAdmin = false;
-  const { mutateComments } = useComments();
+  // const { mutateComments } = useComments();
   // const { data: isAdmin } = useSWR(
   //   user?.id ? ['user_owns_siteId', user.id] : null,
   //   async (_, userId) =>

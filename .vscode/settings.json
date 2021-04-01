@@ -1,0 +1,18 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    ".next": true
+  },
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.ignoreWords": [
+    "js's"
+  ],
+  "cSpell.words": [
+    "Remarq"
+  ]
+}

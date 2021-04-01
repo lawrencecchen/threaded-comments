@@ -11,8 +11,9 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Dashboard</title>
+        <title>Threaded Comments</title>
       </Head>
+
       <CommentsContextProvider postId={1}>
         <ModalProvider>
           <div className="min-w-full min-h-screen dark:bg-gray-800 transition-all">

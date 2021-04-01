@@ -2,7 +2,6 @@ import { Transition } from '@headlessui/react';
 import React, { useEffect, useState } from 'react';
 import supabase from '@lib/utils/initSupabase';
 import { useUser } from '@lib/hooks/use-user';
-import { definitions } from '@lib/types/supabase';
 import { useModal } from '@lib/hooks/use-modal';
 import Avatar from './Avatar';
 
@@ -58,9 +57,7 @@ const NewUserModal = (): JSX.Element => {
 
     setFullNameError(null);
     if (data) {
-      console.log(data);
       await refresh();
-      // handleSuccess();
       close('newUserModal');
     }
   }
@@ -101,16 +98,16 @@ const NewUserModal = (): JSX.Element => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 w-full sm:text-left">
                     <h1
-                      className="text-2xl leading-6 font-medium text-gray-900"
+                      className="text-2xl leading-6 font-medium text-gray-900 dark:text-white"
                       id="modal-headline"
                     >
                       Welcome!
                     </h1>
-                    <p className="my-2 text-sm">
+                    <p className="my-2 text-sm dark:text-gray-200">
                       Continuing as <span className="font-bold">{user?.email}</span>{' '}
                       <button
                         className="text-indigo-500 hover:underline focus:outline-none focus:underline"
@@ -128,7 +125,7 @@ const NewUserModal = (): JSX.Element => {
                             type="text"
                             onChange={(e) => setFullName(e.target.value)}
                             value={fullName}
-                            className="block text-sm w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-75"
+                            className="block text-sm w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-75"
                             placeholder="Jane Eyre"
                             maxLength={300}
                           />
@@ -140,14 +137,14 @@ const NewUserModal = (): JSX.Element => {
                         <label className="block mb-2">
                           <div className="mb-1 text-left">Your username:</div>
                           <div className="flex rounded-md shadow-sm ">
-                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                            <span className="inline-flex dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                               @
                             </span>
                             <input
                               type="text"
                               onChange={(e) => setUsername(e.target.value)}
                               value={username}
-                              className="block text-sm w-full rounded-none rounded-r-md border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 transition duration-75"
+                              className="block text-sm w-full dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 rounded-none rounded-r-md border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 transition duration-75"
                               placeholder="janeausten"
                               maxLength={300}
                             />
