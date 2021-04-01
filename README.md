@@ -2,7 +2,7 @@
 
 ## Demo
 
-https://threaded-comments.vercel.app
+https://debussy.vercel.app
 
 ## Features
 
