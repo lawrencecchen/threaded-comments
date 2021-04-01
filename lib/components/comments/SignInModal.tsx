@@ -59,6 +59,7 @@ function MagicLinkView({ email, setEmail, setAuthView }: MagicLinkViewProps): JS
           <button
             className="px-4 py-2 rounded shadow-sm w-full flex items-center justify-center border border-gray-300 text-gray-800 focus-ring"
             onClick={() => supabase.auth.signIn({ provider: 'github' })}
+            aria-label="Sign in with GitHub"
           >
             <Github className="w-5 h-5 dark:text-white" />
             <span className="ml-2 text-sm leading-none dark:text-gray-200">
@@ -91,6 +92,7 @@ function MagicLinkView({ email, setEmail, setAuthView }: MagicLinkViewProps): JS
             type="submit"
             className="mt-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-500 text-base font-medium text-white hover:bg-indigo-600 focus-ring disabled:opacity-50 sm:w-auto sm:text-sm"
             disabled={loading}
+            aria-label="Send email link"
           >
             Send email link
           </button>
@@ -130,6 +132,7 @@ function AwaitingConfirmationView({
           <button
             className="text-indigo-700 dark:text-indigo-400 hover:underline focus:outline-none"
             onClick={() => setAuthView('magic_link')}
+            aria-label="Edit email"
           >
             (edit)
           </button>
@@ -206,6 +209,7 @@ const SignInModal = () => {
                   type="button"
                   onClick={() => close('signInModal')}
                   className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 dark:text-white text-base font-medium text-gray-700 hover:bg-gray-50 focus-ring sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                  aria-label="cancel"
                 >
                   Cancel
                 </button>

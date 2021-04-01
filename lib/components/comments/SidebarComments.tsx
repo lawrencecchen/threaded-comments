@@ -72,6 +72,7 @@ const SidebarComments = (): JSX.Element => {
             <button
               onClick={handleCloseRemarq}
               className="border border-transparent focus-ring rounded-full"
+              aria-label="Close sidebar comments"
             >
               <X className="text-gray-800 dark:text-gray-100 w-6" />
             </button>

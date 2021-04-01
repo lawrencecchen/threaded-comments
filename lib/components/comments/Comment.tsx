@@ -1,5 +1,5 @@
 import NewCommentForm from '@lib/components/comments/NewCommentForm';
-import { useComments } from '@lib/hooks/use-comments';
+// import { useComments } from '@lib/hooks/use-comments';
 import Plus from '@lib/icons/Plus';
 import supabase from '@lib/utils/initSupabase';
 import type { CommentType } from '@lib/utils/types';
@@ -121,7 +121,10 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
             <div className="col-start-1 border-gray-200 border-t-2 border-l-2 rounded-tl box-border absolute -right-1 bottom-0 w-2/3 h-1/2" />
           </div>
           <div className="col-start-2 flex items-center leading-none mb-1 transform translate-y-1">
-            <button className="text-xs text-gray-500 hover:underline focus-ring active:underline cursor-pointer focus:outline-none">
+            <button
+              className="text-xs text-gray-500 hover:underline focus-ring active:underline cursor-pointer focus:outline-none"
+              aria-label={`View comment by ${parent.author?.full_name}`}
+            >
               @{parent.author?.full_name}:
             </button>
             <div className="text-xs text-gray-500 ml-1 hover:text-gray-400 focus-ring active:text-gray-400 cursor-pointer focus:outline-none line-clamp-1">
@@ -153,6 +156,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
                   hidden
                 )}
                 onClick={() => setHidden(true)}
+                aria-label={`Collapse comment by ${comment.author}`}
               >
                 <div
                   className={cn('w-px h-full', {
@@ -169,6 +173,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
             className={
               'row-start-1 col-start-1 grid place-items-center border-none border-box focus-ring w-7 h-7'
             }
+            aria-label={`Expand comment by ${comment.author}`}
           >
             <Plus className="w-4 h-4 text-gray-500" />
           </button>
@@ -198,6 +203,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
               <button
                 className="text-xs flex flex-row items-center text-gray-600 dark:text-gray-400 focus-ring border-none ml-5 leading-none"
                 onClick={handlePin}
+                aria-label={`Pin comment by ${comment.author?.full_name}`}
               >
                 Pin comment
               </button>
@@ -219,6 +225,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
             <button
               className="text-sm text-indigo-700 dark:text-indigo-400 hover:underline focus:underline focus-ring border border-transparent leading-none"
               onClick={() => setIsOverflowExpanded(!isOverflowExpanded)}
+              aria-label={`Pin comment by ${comment.author?.full_name}`}
             >
               {isOverflowExpanded ? <span>Show less</span> : <span>Read more</span>}
             </button>
@@ -229,6 +236,11 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
               <button
                 className="text-xs flex items-center text-gray-600 dark:text-gray-400 focus-ring border-none"
                 onClick={() => setShowReplyForm(!showReplyForm)}
+                aria-label={
+                  showReplyForm
+                    ? `Hide reply form`
+                    : `Reply to comment by ${comment.author?.full_name}`
+                }
               >
                 {showReplyForm ? <span>Cancel</span> : <span>Reply</span>}
               </button>
@@ -238,6 +250,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
                     <button
                       className="text-xs flex flex-row items-center text-gray-600 dark:text-gray-400 focus-ring border-none"
                       onClick={handleApprove}
+                      aria-label={`Approve comment by ${comment.author?.full_name}`}
                     >
                       Approve
                     </button>
@@ -246,6 +259,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
                     <button
                       className="text-xs flex flex-row items-center text-gray-600 dark:text-gray-400 focus-ring border-none"
                       onClick={handleDeny}
+                      aria-label={`Unapprove comment by ${comment.author?.full_name}`}
                     >
                       Unapprove
                     </button>
@@ -253,12 +267,14 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
                   <button
                     className="text-xs text-red-600 flex flex-row items-center focus-ring border-none"
                     onClick={handleDelete}
+                    aria-label={`Delete comment by ${comment.author?.full_name}`}
                   >
                     Delete
                   </button>
                   <button
                     className="text-xs text-red-600 flex flex-row items-center focus-ring border-none whitespace-nowrap"
                     onClick={handleBan}
+                    aria-label={`Ban ${comment.author?.full_name}`}
                   >
                     Ban user
                   </button>
@@ -296,6 +312,7 @@ const Comment = ({ comment, pageIndex, highlight = false, parent = null }: Props
                 'mt-5 text-xs inline-flex items-center text-gray-600 focus-ring border border-transparent',
                 { hidden }
               )}
+              aria-label={`Continue thread`}
             >
               <div className="h-px w-8 bg-gray-400 dark:bg-gray-600 mr-2" />
               <span className="text-gray-600 dark:text-gray-400">

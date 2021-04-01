@@ -6,12 +6,14 @@ import MessageBubbleButton from '@lib/components/comments/MessageBubbleButton';
 import HeartButton from '@lib/components/comments/HeartButton';
 import { CommentsContextProvider } from '@lib/hooks/use-comments';
 import { ModalProvider } from '@lib/hooks/use-modal';
+import Github from '@lib/icons/Github';
 
 export default function Home(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Threaded Comments</title>
+        <title>Dashboard</title>
+        <meta name="description" content="Threaded comments written with Supabase and Next.js" />
       </Head>
 
       <CommentsContextProvider postId={1}>
@@ -27,6 +29,15 @@ export default function Home(): JSX.Element {
                 </div>
                 <div className="flex-grow-0">
                   <HeartButton />
+                </div>
+                <div className="flex-grow-0">
+                  <a
+                    href="https://github.com/lawrencecchen/threaded-comments"
+                    aria-label="View repo on GitHub"
+                    className="inline-block p-1"
+                  >
+                    <Github className="w-6 h-6" />
+                  </a>
                 </div>
               </div>
             </div>

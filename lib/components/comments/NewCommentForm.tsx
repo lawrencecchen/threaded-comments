@@ -161,12 +161,16 @@ const NewCommentForm = ({
       <div className="flex flex-grow flex-col min-h-14">
         <div className="flex-grow flex items-center space-x-2">
           {!user && (
-            <button className="focus-ring" onClick={() => open('signInModal')}>
+            <button
+              className="focus-ring"
+              onClick={() => open('signInModal')}
+              aria-label="Create new account"
+            >
               <User className="text-gray-600 w-7 h-7" />
             </button>
           )}
           {user && (
-            <button className="focus-ring">
+            <button className="focus-ring" aria-label="View profile information">
               <Avatar profile={profile} />
               {/* <Smile className="w-7 h-7 text-gray-500 hover:text-gray-800 transition" /> */}
             </button>
@@ -195,6 +199,7 @@ const NewCommentForm = ({
               )}
               disabled={content.length < 1}
               onClick={handleSubmit}
+              aria-label="Submit new post"
             >
               Post
             </button>

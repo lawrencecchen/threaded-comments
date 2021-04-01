@@ -114,6 +114,7 @@ const CommentsList = ({ initialData = null, useInfiniteScroll = false }: Props):
                 onClick={() => loadMore()}
                 className="text-sm border-none hover:underline focus:underline focus-ring font-semibold text-gray-600 dark:text-gray-400"
                 disabled={isLoadingMore}
+                aria-label={`Load ${remainingCount} more replies`}
               >
                 {remainingCount} more replies
               </button>

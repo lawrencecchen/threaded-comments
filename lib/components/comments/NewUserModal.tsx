@@ -172,6 +172,7 @@ const NewUserModal = (): JSX.Element => {
                         <button
                           type="submit"
                           className="mt-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-500 text-base font-medium text-white hover:bg-indigo-600 focus-ring sm:w-auto sm:text-sm"
+                          aria-label="Done"
                         >
                           Done
                         </button>

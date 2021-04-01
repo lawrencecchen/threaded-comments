@@ -110,7 +110,11 @@ const VoteButtons = ({
   return (
     <div className="flex items-center text-gray-500 dark:text-gray-400">
       {config.type === 'heart' ? (
-        <button className="text-xs flex items-center focus-ring p-1" onClick={handleUpvote}>
+        <button
+          className="text-xs flex items-center focus-ring p-1"
+          onClick={handleUpvote}
+          aria-label="Like this comment"
+        >
           <Heart
             className={cn('w-4 h-4', {
               'text-red-600 fill-current': status === 'upvoted',
@@ -140,7 +144,7 @@ const VoteButtons = ({
             <button
               className="text-sm flex items-center focus-ring p-1.5"
               onClick={handleDownvote}
-              aria-label="Dislike this comment."
+              aria-label="Dislike this comment"
             >
               {status === 'downvoted' && (
                 <ThumbsUpFilled className="w-4 h-4 text-indigo-500 transform rotate-180" />

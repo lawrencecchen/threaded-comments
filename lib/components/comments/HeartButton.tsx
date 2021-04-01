@@ -35,6 +35,7 @@ const HeartButton = (): JSX.Element => {
     <button
       className="flex items-center focus-ring p-1 text-gray-600 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-50 text-sm"
       onClick={handleVote}
+      aria-label={`Like comment by ${rootComment?.author.full_name}`}
     >
       <Heart
         className={cn('w-6 h-6 stroke-1.5', {
