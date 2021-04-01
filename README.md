@@ -6,7 +6,7 @@ https://debussy.vercel.app
 
 ## Features
 
-- 🧵 Theaded comments (nesting!!)
+- 🧵 Threaded comments (nesting!!)
 - 🗳 Voting
 - 📑 Pagination
 - 🌒 Dark mode
