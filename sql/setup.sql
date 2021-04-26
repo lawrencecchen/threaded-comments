@@ -64,6 +64,19 @@ create table posts (
 
 alter table posts enable row level security;
 
+-- Create root user and initial post. Triggers update in profiles.
+insert into auth.users (id) values ('00000000-0000-0000-0000-000000000000'::uuid);
+
+update profiles
+set
+    full_name = 'Admin',
+    avatar_url = 'https://assets3.thrillist.com/v1/image/1875552/414x310/crop;jpeg_quality=65.jpg'
+where
+    id = '00000000-0000-0000-0000-000000000000'::uuid;
+
+insert into posts (slug, title, content, "authorId") values ('root', 'Root post', 'root post', '00000000-0000-0000-0000-000000000000'::uuid);
+insert into posts (slug, title, content, "authorId", "parentId") values ('threaded-comments-123', 'threaded-comments', 'Threaded comments, built on top of Supabase and Next.js. Visit GitHub to deploy your own: https://github.com/lawrencecchen/threaded-comments', '00000000-0000-0000-0000-000000000000'::uuid, 1);
+
 create policy "Posts are viewable by everyone."
     on posts for select
     using ( true );
@@ -135,6 +148,12 @@ create policy "Avatar images are publicly accessible."
 create policy "Anyone can upload an avatar."
   on storage.objects for insert
   with check ( bucket_id = 'avatars' );
+
+drop view if exists comments_thread_with_user_vote;
+drop view if exists comments_thread;
+drop view if exists comments_with_author_votes;
+drop view if exists comments_linear_view;
+drop view if exists comment_with_author;
 
 create view comment_with_author as
     select
