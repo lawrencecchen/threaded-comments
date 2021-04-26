@@ -40,7 +40,7 @@ const Avatar = ({
     return (
       <img
         src={profile.avatar_url}
-        className={cn('rounded-full border border-white shadow-sm', className)}
+        className={cn('rounded-full border border-white shadow-sm object-cover', className)}
         alt={profile?.full_name}
         width={28}
         height={28}

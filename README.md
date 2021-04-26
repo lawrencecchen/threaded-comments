@@ -11,6 +11,12 @@ https://threaded-comments.vercel.app
 - 📑 Pagination
 - 🌒 Dark mode
 
+## Instant Deploy
+
+The Vercel deployment will guide you through creating a Supabase account and project. After you install the Supabase integration, all relevant environment variables will be set up so that the project is immediately live 🚀.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Flawrencecchen%2Fthreaded-comments&demo-title=Threaded%20Comments%20Demo&demo-description=Threaded%20comments%20built%20with%20Supabase%20and%20Next.js&demo-url=https%3A%2F%2Fdebussy.vercel.app%2F&integration-ids=oac_jUduyjQgOyzev1fjrW83NYOv&external-id=threaded-comments)
+
 ## Getting started
 
 ### 1. Populate `.env`:
