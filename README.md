@@ -393,7 +393,7 @@ create or replace view comments_thread_with_user_vote as
 
 ### 3. Run the application
 
-`npm run dev` or `yarn dev`
+`npm run dev` or `pnpm dev` or `yarn dev`
 
 ## Future improvements
 - Add indexes
