@@ -407,4 +407,4 @@ create or replace view comments_thread_with_user_vote as
 - Add indexes
 
 ## License
-[MIT](LICENSE.md)
+[MIT](LICENSE)
