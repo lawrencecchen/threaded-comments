@@ -8,6 +8,7 @@ https://debussy.vercel.app
 
 - 🧵 Threaded comments (nesting!!)
 - 🗳 Voting
+- 🥇 Sorting
 - 📑 Pagination
 - 🌒 Dark mode
 
