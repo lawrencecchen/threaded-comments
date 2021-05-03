@@ -405,3 +405,6 @@ create or replace view comments_thread_with_user_vote as
 
 ## Future improvements
 - Add indexes
+
+## License
+[MIT](LICENSE.md)
