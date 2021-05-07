@@ -39,7 +39,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 ```sql
 -- Create a table for Public Profiles
--- Create a table for Public Profiles
 create table profiles (
   id uuid references auth.users not null,
   updated_at timestamp with time zone,
