@@ -27,13 +27,13 @@ The Vercel deployment will guide you through creating a Supabase account and pro
 
 ## Getting started
 
-### 1. Populate `.env`:
+### 1. Populate `.env`
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://[YOUR_PROJECT_ID].supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-### 2. Run [setup.sql](sql/setup.sql):
+### 2. Run [setup.sql](sql/setup.sql)
 
 <details><summary>Expand for setup.sql</summary>
 
