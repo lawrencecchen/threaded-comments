@@ -39,7 +39,14 @@
     background-size: 400% 100%;
     animation: loading 8s ease-in-out infinite;
   }
-
+  @keyframes loading {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
   .comment-grid {
     grid-template-columns: fit-content(1.75rem) minmax(0, 1fr);
   }
@@ -56,5 +63,13 @@
       background-size: 400% 100%;
       animation: loading 8s ease-in-out infinite;
     }
+    @keyframes loading {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
   }
 }
