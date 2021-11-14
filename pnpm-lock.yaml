@@ -845,7 +845,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.16.5
-      caniuse-lite: 1.0.30001219
+      caniuse-lite: 1.0.30001280
       colorette: 1.2.2
       fraction.js: 4.0.13
       normalize-range: 0.1.2
@@ -987,7 +987,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001219
+      caniuse-lite: 1.0.30001280
       colorette: 1.2.2
       electron-to-chromium: 1.3.723
       escalade: 3.1.1
@@ -999,7 +999,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001219
+      caniuse-lite: 1.0.30001280
       colorette: 1.2.2
       electron-to-chromium: 1.3.723
       escalade: 3.1.1
@@ -1056,8 +1056,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite/1.0.30001219:
-    resolution: {integrity: sha512-c0yixVG4v9KBc/tQ2rlbB3A/bgBFRvl8h8M4IeUbqCca4gsiCfvtaheUssbnux/Mb66Vjz7x8yYjDgYcNQOhyQ==}
+  /caniuse-lite/1.0.30001280:
+    resolution: {integrity: sha512-kFXwYvHe5rix25uwueBxC569o53J6TpnGu0BEEn+6Lhl2vsnAumRFWEBhDft1fwyo6m1r4i+RqA4+163FpeFcA==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -1257,7 +1257,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.1
     dependencies:
-      caniuse-lite: 1.0.30001219
+      caniuse-lite: 1.0.30001280
       postcss: 8.2.13
     dev: false
 
@@ -2528,7 +2528,7 @@ packages:
       browserify-zlib: 0.2.0
       browserslist: 4.16.1
       buffer: 5.6.0
-      caniuse-lite: 1.0.30001219
+      caniuse-lite: 1.0.30001280
       chalk: 2.4.2
       chokidar: 3.5.1
       constants-browserify: 1.0.0
