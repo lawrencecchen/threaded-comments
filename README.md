@@ -328,7 +328,7 @@ create recursive view comments_thread (
         comments_with_author_votes
     where
         "parentId" is null
-    union all
+    union
     select
         p1.id,
         p1.slug,
