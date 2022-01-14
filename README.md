@@ -4,10 +4,18 @@
 
 https://debussy.vercel.app
 
+
+
+https://user-images.githubusercontent.com/54008264/116842442-7109b000-ab91-11eb-93d5-570f20f139bd.mov
+
+
+
+
 ## Features
 
 - 🧵 Threaded comments (nesting!!)
 - 🗳 Voting
+- 🥇 Sorting
 - 📑 Pagination
 - 🌒 Dark mode
 
@@ -19,18 +27,17 @@ The Vercel deployment will guide you through creating a Supabase account and pro
 
 ## Getting started
 
-### 1. Populate `.env`:
+### 1. Populate `.env`
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://[YOUR_PROJECT_ID].supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-### 2. Run [setup.sql](sql/setup.sql):
+### 2. Run [setup.sql](sql/setup.sql)
 
 <details><summary>Expand for setup.sql</summary>
 
 ```sql
--- Create a table for Public Profiles
 -- Create a table for Public Profiles
 create table profiles (
   id uuid references auth.users not null,
@@ -321,7 +328,7 @@ create recursive view comments_thread (
         comments_with_author_votes
     where
         "parentId" is null
-    union all
+    union
     select
         p1.id,
         p1.slug,
@@ -393,7 +400,7 @@ create or replace view comments_thread_with_user_vote as
 
 ### 3. Run the application
 
-`npm run dev` or `yarn dev`
+`npm run dev` or `pnpm dev` or `yarn dev`
 
-## Future improvements
-- Add indexes
+## License
+[MIT](LICENSE)
