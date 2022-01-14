@@ -2,6 +2,7 @@ const colors = require('tailwindcss/colors');
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  mode:'jit', // <= add here
   purge: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './lib/**/*.{js,ts,jsx,tsx}',
